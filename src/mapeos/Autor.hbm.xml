@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="POJOS.C_Autor" table="autores">
+        <id name="idAutor" column="idAutor" >
+            <generator class="increment"/>
+        </id> 
+        <property name="nombre" column="nombre"/>
+        <property name="nacionalidad" column="nacionalidad"/>
+        <set name="libros" table="libros_autores" cascade="save-update" >
+            <key>
+                <column name="autor" />
+            </key>
+            <many-to-many class="POJOS.C_Libro" column="libro" />
+        </set>
+    </class>
+</hibernate-mapping>
